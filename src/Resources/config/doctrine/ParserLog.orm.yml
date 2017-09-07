@@ -1,0 +1,22 @@
+BA\ParserBundle\Entity\ParserLog:
+    type: entity
+    table: ba_parser_log
+    repositoryClass: BA\ParserBundle\Repository\ParserLogRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        messageId:
+            type: integer
+        message:
+            type: string
+            length: '120'
+        date:
+            type: datetime
+        level:
+            type: string
+            length: '10'
+    lifecycleCallbacks: {  }

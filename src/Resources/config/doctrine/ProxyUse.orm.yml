@@ -1,0 +1,28 @@
+BA\ParserBundle\Entity\ProxyUse:
+    type: entity
+    manyToOne:
+        proxy:
+            targetEntity: BA\ParserBundle\Entity\Proxy
+            inversedBy: uses
+            joinColumn:
+                name: proxy_id
+                referencedColumnName: id
+    table: parser_proxy_use
+    repositoryClass: BA\ParserBundle\Repository\ProxyUseRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        context:
+            type: string
+            length: '35'
+        dateReuse:
+            type: datetime
+            nullable: true
+            column: date_reuse
+        blocked:
+            type: boolean
+    lifecycleCallbacks: {  }

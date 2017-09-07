@@ -1,0 +1,28 @@
+services:
+    parser.storage_logs:
+        class: BA\ParserBundle\Logger\ParserStorageLogs
+        arguments: ['@service_container']
+    parser.logger_handler:
+        class: BA\ParserBundle\Logger\ParserHandler
+        arguments: ['@parser.storage_logs']
+    parser.request_factory:
+        class: BA\ParserBundle\Loader\Request\RequestFactory
+        arguments: []
+    parser.page_loader:
+        class: BA\ParserBundle\Loader\PageLoader
+        arguments: ["@parser.response_handler", "@parser.proxy.proxy_manager"]
+    parser.response_handler:
+        class: BA\ParserBundle\Loader\Response\ResponseHandler
+        arguments: []
+    parser.proxy.proxy_manager:
+        class: BA\ParserBundle\Loader\Proxy\ProxyManager
+        arguments: ["@parser.proxy.storage_db"]
+    parser.proxy.storage_db:
+        class: BA\ParserBundle\Loader\Proxy\DBProxyStorage
+        arguments: ["@doctrine.orm.entity_manager"]
+    parser.user_agent_storage:
+        class: BA\ParserBundle\Loader\UserAgentStorage
+        arguments: ["@doctrine.orm.entity_manager"]
+    parser.process.factory:
+        class: BA\ParserBundle\Process\ProcessFactory
+        arguments: ['%parser_process_class%']

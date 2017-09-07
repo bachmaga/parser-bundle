@@ -1,0 +1,32 @@
+BA\ParserBundle\Entity\Proxy:
+    type: entity
+    oneToMany:
+        uses:
+            targetEntity: BA\ParserBundle\Entity\ProxyUse
+            mappedBy: proxy
+    table: parser_proxy
+    repositoryClass: BA\ParserBundle\Repository\ProxyRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        port:
+            type: string
+            length: '10'
+        address:
+            type: string
+            length: '25'
+        timeLastCheckUpdate:
+            type: datetime
+            nullable: true
+        note:
+            type: string
+            lenght: 20
+            nullable: true
+        isWorking:
+            type: boolean
+            column: is_working
+    lifecycleCallbacks: {  }

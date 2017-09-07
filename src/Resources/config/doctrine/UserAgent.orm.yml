@@ -1,0 +1,15 @@
+BA\ParserBundle\Entity\UserAgent:
+    type: entity
+    table: parser_user_agents
+    repositoryClass: BA\ParserBundle\Repository\UserAgentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '200'
+    lifecycleCallbacks: {  }
